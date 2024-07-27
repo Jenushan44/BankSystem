@@ -1,8 +1,8 @@
 #include <iostream>
 
 void checkBalance(double balance);
-double makeDeposit(double balance);
-double makeWithdrawal();
+double makeDeposit();
+double makeWithdrawal(double balance);
 
 int main() {
 
@@ -25,13 +25,18 @@ int main() {
             checkBalance(balance);
             break;
         case 2:
-            balance += makeDeposit(balance);
+            balance += makeDeposit();
             checkBalance(balance);
             break;
         case 3:
-            balance -= makeWithdrawal();
+            balance -= makeWithdrawal(balance);
             checkBalance(balance);
             break;
+        case 4: 
+            std::cout<<"Thank you for using the bank manager";
+            break;
+        default:
+            std::cout<<"Please enter a valid choice\n";
         }
     } while(choice != 4);
 }
@@ -40,7 +45,7 @@ void checkBalance(double balance) {
     std::cout<<"Your balance is " << balance << "\n";
 }
 
-double makeDeposit(double balance) {
+double makeDeposit() {
     
     double amount = 0.0;
 
@@ -49,12 +54,19 @@ double makeDeposit(double balance) {
     return amount;
 }
 
-double makeWithdrawal() {
+double makeWithdrawal(double balance) {
 
     double amount = 0.0;
 
     std::cout<<"Please enter the amount you would like to withdraw: ";
     std::cin>>amount;
-    return amount;
 
+    if (amount < 0) {
+        std::cout<<"Please enter a valid amount to withdraw";
+        return 0;
+    } else if (amount > balance) {
+        std::cout<<"Insufficient Funds";
+        return 0;
+    } 
+    return amount;
 }
