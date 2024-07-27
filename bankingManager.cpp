@@ -2,6 +2,7 @@
 
 void checkBalance(double balance);
 double makeDeposit(double balance);
+double makeWithdrawal();
 
 int main() {
 
@@ -25,7 +26,10 @@ int main() {
             balance += makeDeposit(balance);
             checkBalance(balance);
             break;
-        
+        case 3:
+            balance -= makeWithdrawal();
+            checkBalance(balance);
+            break;
         }
 }
 
@@ -37,7 +41,17 @@ double makeDeposit(double balance) {
     
     double amount = 0.0;
 
-    std::cout<<"Please select the amount you would like to deposit: ";
+    std::cout<<"Please enter the amount you would like to deposit: ";
     std::cin>>amount;
     return amount;
+}
+
+double makeWithdrawal() {
+
+    double amount = 0.0;
+
+    std::cout<<"Please enter the amount you would like to withdraw: ";
+    std::cin>>amount;
+    return amount;
+
 }
