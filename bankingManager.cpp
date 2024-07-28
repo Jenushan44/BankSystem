@@ -91,12 +91,21 @@ void createAccount() {
     std::cin>>lastName;
     std::cout<<"Please enter your date of birth (DD/MM/YYYY): \n";
     std::cin>>birthday;
-    std::cout<<"Please create a password: \n";
-    std::cin>>password;
+    
+    do {
+        std::cout<<"Please create a password: \n";
+        std::cin>>password;
+        std::cout<<"Your password is too short or too long\n";
+        std::cout<<"Passwords should be between 8 and 64 characters\n";
+    } while (password.length() < 8 || password.length() > 64);
+
+    std::cout<<"Password Accepted\n";
+    
+
 
     std::ofstream myfile;
     myfile.open("accountInfo.txt", std::ios::app);
-    myfile << "Name: " << firstName << lastName << "\n";
+    myfile << "Name: " << firstName << " " << lastName << "\n";
     myfile << "Date of Birth: " << birthday << "\n";
     myfile.close();
 
