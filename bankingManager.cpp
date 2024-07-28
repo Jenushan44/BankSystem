@@ -3,6 +3,7 @@
 void checkBalance(double balance);
 double makeDeposit();
 double makeWithdrawal(double balance);
+void createAccount();
 
 int main() {
 
@@ -16,7 +17,8 @@ int main() {
     std::cout<<"1. Check Balance\n";
     std::cout<<"2. Make a Deposit\n";
     std::cout<<"3. Make a Withdrawal\n";
-    std::cout<<"4. Exit\n";
+    std::cout<<"4. Create an account\n";
+    std::cout<<"5. Exit\n";
 
     std::cin>>choice;
 
@@ -32,13 +34,16 @@ int main() {
             balance -= makeWithdrawal(balance);
             checkBalance(balance);
             break;
-        case 4: 
+        case 4:
+            createAccount();
+            break;
+        case 5: 
             std::cout<<"Thank you for using the bank manager";
             break;
         default:
             std::cout<<"Please enter a valid choice\n";
         }
-    } while(choice != 4);
+    } while(choice != 5);
 }
 
 void checkBalance(double balance) {
@@ -69,4 +74,22 @@ double makeWithdrawal(double balance) {
         return 0;
     } 
     return amount;
+}
+
+void createAccount() {
+
+    std::string firstName;
+    std::string lastName;
+    std::string birthday;
+    std::string password;
+
+    std::cout<<"You have selected to create an account\n";
+    std::cout<<"Please enter your first name \n";
+    std::cin>>firstName;
+    std::cout<<"Please enter your last name: \n";
+    std::cin>>lastName;
+    std::cout<<"Please enter your date of birth (DD/MM/YYYY): \n";
+    std::cin>>birthday;
+    std::cout<<"Please create a password: \n";
+    std::cin>>password;
 }
