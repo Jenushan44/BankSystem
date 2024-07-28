@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 void checkBalance(double balance);
 double makeDeposit();
@@ -92,4 +93,11 @@ void createAccount() {
     std::cin>>birthday;
     std::cout<<"Please create a password: \n";
     std::cin>>password;
+
+    std::ofstream myfile;
+    myfile.open("accountInfo.txt", std::ios::app);
+    myfile << "Name: " << firstName << lastName << "\n";
+    myfile << "Date of Birth: " << birthday << "\n";
+    myfile.close();
+
 }
